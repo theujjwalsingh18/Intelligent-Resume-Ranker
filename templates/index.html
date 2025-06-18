@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligent Resume Ranker</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" type="image/svg+xml" href="/static/favicon.svg" />
+    </head>
+
+<body data-theme="dark">
+    <div class="bg-decoration"></div>
+    <div class="bg-decoration"></div>
+    <div class="bg-decoration"></div>
+
+    <div class="theme-toggle" id="themeToggle">
+        <span id="themeIcon">🌙</span>
+    </div>
+
+    <div class="container">
+        <div class="main-card" id="mainForm">
+            <div class="header">
+                <div class="logo">⚡</div>
+                <h1 class="title">Intelligent Resume Ranker</h1>
+                <p class="subtitle">Streamline your hiring process with AI-powered candidate evaluation</p>
+            </div>
+
+            <form id="rankingForm">
+                <div class="form-group">
+                    <label class="form-label">
+                        📄 Job Description
+                    </label>
+                    <textarea class="textarea" id="jobDescription" placeholder="Enter the job description here..."
+                        required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        📎 Select Resumes (PDF or DOCX)
+                    </label>
+                    <div class="file-upload" id="fileUpload">
+                        <div class="upload-icon">📁</div>
+
+                        <div class="upload-text">Click or drag files to upload</div>
+                        <div class="upload-subtext">PDF or DOCX files, max 10MB each</div>
+                        <input type="file" class="file-input" id="fileInput" multiple accept=".pdf,.docx">
+                    </div>
+                    <div class="selected-files" id="selectedFiles"></div>
+                    <div class="error-message" id="errorMessage"></div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="submitBtn">
+                    ⚡ Rank Candidates
+                </button>
+            </form>
+        </div>
+
+        <div class="main-card loading" id="loadingState" style="display: none;">
+            <div class="spinner"></div>
+            <h3>Analyzing Resumes...</h3>
+            <p>Our AI is evaluating candidates against your job requirements</p>
+        </div>
+
+        <div class="main-card results" id="resultsSection" style="display: none;">
+            <div class="results-header">
+                <h2 class="results-title">Ranking Results</h2>
+                <p class="subtitle">Candidates sorted by relevance to your job description</p>
+                <div class="job-info" id="jobInfo">
+                    <span>📄</span>
+                    <span id="jobTitle">Job Description</span>
+                </div>
+            </div>
+
+            <div class="candidates-section">
+                <h3 class="section-title">
+                    ⭐ Top Candidates
+                </h3>
+                <div class="candidates-table">
+                    <!-- Deep -->
+                    <div class="table-content">
+                        <div class="table-header">
+                            <div>RANK</div>
+                            <div>RESUME FILENAME</div>
+                            <div>RELEVANCE SCORE</div>
+                            <div>TECH STACK</div>
+                        </div>
+                        <div id="candidatesList"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="btn btn-secondary" id="backBtn">
+                    ← Rank New Resumes
+                </button>
+                <button class="btn btn-success" id="downloadBtn">
+                    📥 Download HR Report (CSV)
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+
+</html>
